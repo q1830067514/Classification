@@ -36,7 +36,7 @@ def run_query(wanted):
 
 if __name__ == '__main__':
     while True:
-        sought = input('Input a word you want to search: ')
+        sought = input('Input a word you want to search: ')#输入要搜索的单词
         if sought == 'q':
             break
 
