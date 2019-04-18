@@ -1,13 +1,13 @@
 # -*- coding: cp936 -*-
-
+#20161152116ç‹æ·‘èŠ³
 import linecache
-o=open('ËÄÁù¼¶µ¥´Ê.csv')#ÎÄ¼şÂ·¾¶
+o=open('å››å…­çº§å•è¯.csv')#æ–‡ä»¶è·¯å¾„
 o.seek(0)
 r=o.readlines()
-s1=str(input('ÊäÈëÒª²éÑ¯µÄµ¥´Ê:'))
+s1=str(input('è¾“å…¥è¦æŸ¥è¯¢çš„å•è¯:'))
 a=0
 count=0
-for i in r: #°´ºÍÖµ×éºÏ²éÕÒ
+for i in r: #æŒ‰å’Œå€¼ç»„åˆæŸ¥æ‰¾
     if i.find(s1)>=0:       
-        print(i)#ÏÔÊ¾¶¨Î»ĞĞ
+        print(i)#æ˜¾ç¤ºå®šä½è¡Œ
 
