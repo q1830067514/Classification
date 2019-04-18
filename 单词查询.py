@@ -3,8 +3,8 @@
 import re
 from string import punctuation
 
-text = open('find.txt')
-text_list = text.readlines()
+text = open('find.txt')       #打开文件
+text_list = text.readlines()  #读起所有行
 # 删除标点及其他常用符号
 # punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
 text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
@@ -36,7 +36,7 @@ def run_query(wanted):
 
 if __name__ == '__main__':
     while True:
-        sought = input('Input a word you want to search: ')
+        sought = input('Input a word you want to search: ')#输入要搜索的单词
         if sought == 'q':
             break
 
