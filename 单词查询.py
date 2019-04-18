@@ -1,10 +1,10 @@
 # 查询文本中某单词出现的次数，并打印其出现的行号及所在行的内容
 # 只适用于英文文本
-import re
-from string import punctuation
+import re  #导入模块
+from string import punctuation  #从字符串导入标点
 
-text = open('find.txt')
-text_list = text.readlines()
+text = open('find.txt')   #打开文件
+text_list = text.readlines()  #读取文件的行
 # 删除标点及其他常用符号
 # punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
 text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
@@ -35,7 +35,7 @@ def run_query(wanted):
 
 
 if __name__ == '__main__':
-    while True:
+    while True:  #当条件为真的时候
         sought = input('Input a word you want to search: ')
         if sought == 'q':
             break
