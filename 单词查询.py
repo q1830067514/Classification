@@ -15,7 +15,7 @@ print(one_word_list)
 
 def run_query(wanted):
     word_total = 0
-    # 统计出现的总个数
+    # 统计出现单词的总个数
     for each in one_word_list:
         if each == wanted:
             word_total += 1
