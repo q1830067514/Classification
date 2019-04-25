@@ -13,7 +13,7 @@ one_word_list = [word.lower() for word in text_plain.split()]
 print(one_word_list)
 
 
-def run_query(wanted):
+def run_query(wanted):##############################
     word_total = 0
     # 统计出现的总个数
     for each in one_word_list:   #输入单词是否在列表里面
