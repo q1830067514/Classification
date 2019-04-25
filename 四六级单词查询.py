@@ -5,12 +5,11 @@ from string import punctuation
 
 text = open('find.txt')#打开文件
 text_list = text.readlines()
-# 删除标点及其他常用符号
 # punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
 text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
-# 大写转换为小写，便于正确统计单词数
 one_word_list = [word.lower() for word in text_plain.split()]
 print(one_word_list)#输出一个单词列表
+
 
 
 def run_query(wanted):
