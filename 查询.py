@@ -1,12 +1,9 @@
-# 查询文本中某单词出现的次数，并打印其出现的行号及所在行的内容
-# 只适用于英文文本
 import re
 from string import punctuation
 
 text = open('find.txt')
 text_list = text.readlines()
 # 删除标点及其他常用符号
-# punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
 text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
 # 大写转换为小写，便于正确统计单词数
 one_word_list = [word.lower() for word in text_plain.split()]
@@ -23,7 +20,7 @@ def run_query(wanted):
     print('"{}" occurs {} times'.format(wanted, word_total))
 
     line_number = 0
-    for line in text_list:
+    for line in text_list:#使用for..in循环遍历 text_list内容，并把获得的内容赋给line
         line_plain = re.sub(r'[{}]'.format(punctuation), '', line)
         word_list = [word.lower() for word in line_plain.split()]
         # 按照用户习惯第一行从"1"开始
@@ -34,10 +31,10 @@ def run_query(wanted):
             print('\tline {}: {}'.format(line_number, text_list[line_number - 1]), end='')
 
 
-if __name__ == '__main__':#if __name__ == 'main': 的作用就是控制这两种情况执行代码的过程，在if __name__ == 'main': 下的代码只有文件作为脚本直接执行才会被执行，而import到其他脚本中是不会被执行的。
+if __name__ == '__main__':#当该文件被直接运行时，if __name__ == '__main__'之下的代码块将被运行；当该文件以模块形式被导入时，if __name__ == '__main__'之下的代码块不被运行。
     while True:
-        sought = input('Input a word you want to search: ')
+        sought = input('input a word you want to search: ')
         if sought == 'q':
             break
 
-        run_query(sought) #运行查询
+        run_query(sought) 
