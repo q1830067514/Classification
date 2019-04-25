@@ -1,8 +1,9 @@
+﻿姓名：杨普伦
 # -*- coding: cp936 -*-
 import linecache
 o=open('单词表.csv')#文件路径
 o.seek(0)
-r=o.readlines()
+r=o.readlines()#读起文件
 s1=str(input('输入要定位的信息:'))
 a=0
 count=0

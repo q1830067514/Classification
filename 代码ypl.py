@@ -1,3 +1,4 @@
+#姓名：杨普伦
 # -*- coding: cp936 -*-
 import linecache
 o=open('单词表.csv')#打开文件
