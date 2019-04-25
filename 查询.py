@@ -12,7 +12,6 @@ one_word_list = [word.lower() for word in text_plain.split()]
 print(one_word_list)
 def run_query(wanted):
     word_total = 0
-    # 统计出现的总个数
     for each in one_word_list:
         if each == wanted:
             word_total += 1
@@ -30,5 +29,4 @@ if __name__ == '__main__':#作用是控制这两种情况执行代码的过程�
         sought = input('Input a word you want to search: ')
         if sought == 'q':
             break
-
-        run_query(sought) #运行查询
+run_query(sought) #运行查询
