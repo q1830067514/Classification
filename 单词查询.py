@@ -10,7 +10,7 @@ text_list = text.readlines()  #读起所有行
 text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
 # 大写转换为小写，便于正确统计单词数
 one_word_list = [word.lower() for word in text_plain.split()]
-print(one_word_list)
+print(one_word_list)#输出一个单词列表
 
 
 def run_query(wanted):
