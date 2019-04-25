@@ -13,12 +13,12 @@ one_word_list = [word.lower() for word in text_plain.split()]
 print(one_word_list)
 
 
-def run_query(wanted):##############################
+def run_query(wanted):
     word_total = 0
     # 统计出现的总个数
-    for each in one_word_list:   #输入单词是否在列表里面
-        if each == wanted:       #如果在
-            word_total += 1      #单词自加一
+    for each in one_word_list:
+        if each == wanted:
+            word_total += 1
 
     print('"{}" occurs {} times'.format(wanted, word_total))
 
@@ -37,7 +37,7 @@ def run_query(wanted):##############################
 if __name__ == '__main__':
     while True:
         sought = input('Input a word you want to search: ')#输入要搜索的单词
-        if sought == 'q': #如果找到
-            break吧       #弹出
+        if sought == 'q':
+            break
 
         run_query(sought)
