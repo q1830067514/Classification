@@ -1,4 +1,4 @@
-# 查询文本中某单词出现的次数，并打印其出现的行号及所在行的内容
+=xx
 # 只适用于英文文本
 import re#导入模块
 from string import punctuation
