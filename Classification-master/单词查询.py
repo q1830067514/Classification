@@ -1,7 +1,7 @@
 # 查询文本中某单词出现的次数，并打印其出现的行号及所在行的内容
 # 只适用于英文文本
 import re
-from string import punctuation#导入模块
+from string import punctuation
 
 text = open('find.txt')       #打开文件
 text_list = text.readlines()  #读起所有行
@@ -10,12 +10,12 @@ text_list = text.readlines()  #读起所有行
 text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
 # 大写转换为小写，便于正确统计单词数
 one_word_list = [word.lower() for word in text_plain.split()]
-print(one_word_list)#输出一个单词列表
+print(one_word_list)
 
 
 def run_query(wanted):
     word_total = 0
-    # 统计出现单词的总个数
+    # 统计出现的总个数
     for each in one_word_list:
         if each == wanted:
             word_total += 1
