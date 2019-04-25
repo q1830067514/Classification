@@ -4,10 +4,10 @@ import re
 from string import punctuation
 text = open('find.txt')
 text_list = text.readlines()
-# 删除标点及其他常用符号
+# 删除标点符号及其他常用符号
 # punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
 text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
-# 大写转换为小写，便于正确统计单词数
+# 转换为小写，便于正确统计单词数
 one_word_list = [word.lower() for word in text_plain.split()]
 print(one_word_list)
 def run_query(wanted):
@@ -29,4 +29,4 @@ if __name__ == '__main__':#作用是控制这两种情况执行代码的过程�
         sought = input('Input a word you want to search: ')
         if sought == 'q':
             break
-run_query(sought) #运行查询
+run_query(sought) #开始查询
