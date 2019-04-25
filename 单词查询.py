@@ -1,7 +1,7 @@
 # 查询文本中某单词出现的次数，并打印其出现的行号及所在行的内容
 # 只适用于英文文本
 import re
-from string import punctuation
+from string import punctuation#导入模块
 
 text = open('find.txt')       #打开文件
 text_list = text.readlines()  #读起所有行
