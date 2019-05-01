@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+import csv
+
+#定义一个字符串
+st = "I am a student."
+#定义列表,注意csv只接受以ACSII编码的字符串序列
+li = [1,2,3,4,5]  #不符合要求
+lis = ['a','b','c']
+
+reader1 = csv.reader(st)
+for line in reader1:
+    print line,   #['I'] [' '] ['a'] ['m'] [' '] ['a'] [' '] ['s'] ['t'] ['u'] ['d'] ['e'] ['n'] ['t'] ['.']
+
+print '\n'+str(reader1.line_num)   #输出行数
+
+reader2 = csv.reader(lis)
+for line in reader2:
+    print line,
+
+#打开文件对象
+with open ('./egg.csv','rb') as csvfile:
+    reader3 = csv.reader(csvfile)
+    for row in reader3:
+        print row,
