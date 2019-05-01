@@ -1,24 +1,26 @@
+#姓名：周红
+#学号：20161152161 
 # 查询文本中某单词出现的次数，并打印其出现的行号及所在行的内容
 # 只适用于英文文本
-import re
-from string import punctuation#导入模块
+import re  #导入模块
+from string import punctuation  #从字符串导入标点
 
-text = open('find.txt')       #打开文件
-text_list = text.readlines()  #读起所有行
+text = open('find.txt')   #打开文件
+text_list = text.readlines()  #读取文件的行
 # 删除标点及其他常用符号
 # punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
 text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
 # 大写转换为小写，便于正确统计单词数
 one_word_list = [word.lower() for word in text_plain.split()]
-print(one_word_list)#输出一个单词列表
+print(one_word_list)
 
 
 def run_query(wanted):
     word_total = 0
-    # 统计出现单词的总个数
+    # 统计出现的总个数
     for each in one_word_list:
         if each == wanted:
-            word_total += 1
+            word_total += 1 
 
     print('"{}" occurs {} times'.format(wanted, word_total))
 
@@ -34,9 +36,9 @@ def run_query(wanted):
             print('\tline {}: {}'.format(line_number, text_list[line_number - 1]), end='')
 
 
-if __name__ == '__main__':
-    while True:
-        sought = input('Input a word you want to search: ')#输入要搜索的单词
+if __name__ == '__main__':     #定义一个函数             #
+    while True:  #当条件为真的时候
+        sought = input('Input a word you want to search: ')
         if sought == 'q':
             break
 
