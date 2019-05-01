@@ -1,34 +1,53 @@
-import re
-from string import punctuation
-text = open('find.txt')
-text_list = text.readlines()
-# 删除标点及其他常用符号
-# punctuation = r"""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""
-text_plain = re.sub(r'[{}]'.format(punctuation), '', ''.join(text_list))
-# 大写转换为小写，便于正确统计单词数
-one_word_list = [word.lower() for word in text_plain.split()]
-print(one_word_list)
-def run_query(wanted):
-    word_total = 0
-    # 统计出现的总个数
-    for each in one_word_list:
-        if each == wanted:
-            word_total += 1
-            print('"{}" occurs {} times'.format(wanted, word_total))
-    line_number = 0
-    for line in text_list:
-        line_plain = re.sub(r'[{}]'.format(punctuation), '', line)
-        word_list = [word.lower() for word in line_plain.split()]
-        # 按照用户习惯第一行从"1"开始
-        line_number += 1
-        # 每行的单词列表
-        if wanted in word_list:
-            # 而下标"0"表示第一行，故需要减去1
-            print('\tline {}: {}'.format(line_number, text_list[line_number - 1]), end='')
-if __name__ == '__main__':
-    while True:
-        sought = input('Input a word you want to search: ')
-        if sought == 'q':
-            break
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
 
-        run_query(sought)
+import urllib
+import sys
+import re
+from bs4 import BeautifulSoup
+
+URL = 'http://www.iciba.com/'
+
+while True:
+    try:
+        word = raw_input("请输入你要查找的单词(或者按CTRL+D或CTRL+C退出):")
+    except KeyboardInterrupt:
+        print "\n退出。"
+        sys.exit(1)
+    except EOFError:
+        print "\n退出。"
+        sys.exit(1)
+    if not word:
+        break
+    url = URL + word
+    #查找单词
+    f = urllib.urlopen(url)
+    reader = f.readlines()
+    #用正则表达式进行匹配
+    #这里我用BeautifulSoup进行标签的解析
+    soup = BeautifulSoup(''.join(reader))   #新建一个soup对象
+    #先进行一般释义的抓取
+    results1 = soup.findAll("div",{"class":"group_pos"})
+    if not results1:
+        print '不好意思，找不到你要查找的单词'
+        continue
+    #对每块进行解析
+    sys.stdout.write('\n')   #换行
+    for item in results1:
+        aa = item.findAll("strong",{"class":"fl"})
+        bb = item.findAll("span",{"class":"label_list"})
+        #二重循环
+        for i in range(len(aa)):
+            print aa[i].contents[0],
+            dd = bb[i].findAll("label")
+            for ee in dd:
+                print ee.contents[0],
+            sys.stdout.write('\n') #分好行 
+    #查找网络释义
+    results2 = soup.findAll("div",{"class":"net_paraphrase"})
+    print "网络释义:",
+    ff = results2[0].findAll("li")
+    for item in ff:
+        print item.contents[0],
+    sys.stdout.write('\n')   #换行
+    sys.stdout.write('\n')   #换行
